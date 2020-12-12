@@ -18,7 +18,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent ,Graph *graph)
+MainWindow::MainWindow(QWidget *parent ,NonOrientedGraph *graph)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , m_graph(graph)

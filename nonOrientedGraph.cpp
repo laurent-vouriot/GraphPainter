@@ -3,10 +3,10 @@
   Decembre 2020
 -------------------------------------------------------------------------------*/
 /**
-* @file    graph.cpp
+* @file    nonOrientedGraph.cpp
 * @author  Laurent VOURIOT
 * @version 0.1
-* @date    11/12/2020
+* @date    12/12/2020
 */
 //-----------------------------------------------------------------------------
 // INCLUDES
@@ -16,18 +16,13 @@
 #include <QPainter>
 
 #include "mainwindow.h"
-#include "graph.h"
+#include "nonOrientedGraph.h"
 
-Graph::Graph(const std::vector<Node *> &nodes):
-    m_nodes(nodes)
-{
-    // on redimensionne la matrice et on met tout à false
-    // cela signifie que l'on a tous les noeuds mais il n'y
-    // a pour le moment pas d'arêtes entre les noeuds
-    m_graph = matrice(m_nodes.size(), std::vector<bool>(m_nodes.size(), false));
-}// Graph()
+NonOrientedGraph::NonOrientedGraph(const std::vector<Node *> &nodes)
+    : AbsGraph(nodes)
+{}
 
-void Graph::link(const Node &begin, const Node &end)
+void NonOrientedGraph::link(const Node &begin, const Node &end)
 {
     // on parcours la liste de noeud pour trouver leurs rang
     // dans la matrice d'adjacence
@@ -47,11 +42,3 @@ void Graph::link(const Node &begin, const Node &end)
     m_graph[rank_begin][rank_end] = true;
     m_graph[rank_end][rank_begin] = true;
 }// link()
-
-//-----------------------------------------------------------------------------
-//	GETTERS
-//-----------------------------------------------------------------------------
-std::vector<Node *> Graph::getNodes()                    		  	  {return m_nodes;}
-Node 			   *Graph::getNode(const unsigned &i)	        const {return m_nodes[i];}
-matrice 		    Graph::getMatrice() 					    const {return m_graph;}
-

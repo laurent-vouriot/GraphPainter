@@ -3,13 +3,13 @@
   Decembre 2020
 -------------------------------------------------------------------------------*/
 /**
-* @file    graph.h
+* @file    absgraph.h
 * @author  Laurent VOURIOT
 * @version 0.1
-* @date    11/12/2020
+* @date    12/12/2020
 */
-#ifndef GRAPH_H
-#define GRAPH_H
+#ifndef ABSGRAPH_H
+#define ABSGRAPH_H
 //-----------------------------------------------------------------------------
 // INCLUDES
 //-----------------------------------------------------------------------------
@@ -19,30 +19,15 @@
 
 typedef std::vector<std::vector<bool>> matrice;
 
-/**
- * @brief classe qui définie un graphe non orienté
- * 		  - m_graphe (matrice) : matrice d'adjacence du graphe
- * 		  - m_nodes (vector<Node>) : liste des sommets du graphes
- */
-class Graph
+class AbsGraph
 {
-private:
+protected:
     matrice m_graph;
     std::vector<Node *> m_nodes;
 public:
-    /**
-     * @brief Graph constructor
-     * @param nodes (vector<Node>) : liste des noeuds du graphe
-     */
-    Graph(const std::vector<Node *> &nodes);
+    AbsGraph(const std::vector<Node *> &nodes);
 
-    /**
-     * @brief link
-     * crée une arête entre le sommet begin et end
-     * @param begin (Node)
-     * @param end (Node)
-     */
-    void link(const Node &begin, const Node &end);
+    virtual void link(const Node &begin, const Node &end) = 0;
 
 //-----------------------------------------------------------------------------
 //	GETTERS
@@ -65,4 +50,4 @@ public:
     Node *getNode(const unsigned &i) const;
 };
 
-#endif // GRAPH_H
+#endif // ABSGRAPH_H

@@ -23,7 +23,7 @@
 using namespace std;
 
 
-Graph randomKGraph()
+NonOrientedGraph randomKGraph()
 {
     vector<Node *> vnodes;
     // random seed
@@ -37,7 +37,7 @@ Graph randomKGraph()
         char const *pchar = s.c_str();
         vnodes.push_back(new Node(rand() % 500 + 1,rand() % 500 + 1, pchar));
     }
-    Graph graph(vnodes);
+    NonOrientedGraph graph(vnodes);
 
     // génération aléatoire des arêtes
     for(const Node* begin:vnodes)
@@ -52,7 +52,7 @@ Graph randomKGraph()
     return graph;
 }// randomKGraph()
 
-Graph fixedGraph()
+NonOrientedGraph fixedGraph()
 {
     Node n1(456,45,"A");
     Node n2(253,456,"B");
@@ -63,7 +63,7 @@ Graph fixedGraph()
     Node n7(89,300,"H");
 
     vector<Node *> vnodes{&n1,&n2,&n3,&n4,&n5,&n6,&n7};
-    Graph graph(vnodes);
+    NonOrientedGraph graph(vnodes);
 
     graph.link(n1, n4);
     graph.link(n1, n5);
@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
             "génération fixée : 1 \n" << endl;
 
     // Graph graph = fixedGraph();
-    Graph graph = randomKGraph();
+    NonOrientedGraph graph = randomKGraph();
 
 //    cin >> generation;
 //    if(generation == 0)
