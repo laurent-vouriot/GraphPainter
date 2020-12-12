@@ -39,7 +39,7 @@ NonOrientedGraph randomKGraph()
     }
     NonOrientedGraph graph(vnodes);
 
-    // génération aléatoire des arêtes
+    // génération des arêtes
     for(const Node* begin:vnodes)
     {
         for(const Node* end:vnodes)
@@ -54,31 +54,38 @@ NonOrientedGraph randomKGraph()
 
 NonOrientedGraph fixedGraph()
 {
-    Node n1(456,45,"A");
-    Node n2(253,456,"B");
-    Node n3(45,201,"D");
-    Node n4(111,200,"E");
-    Node n5(55,88,"F");
-    Node n6(231,100,"G");
-    Node n7(89,300,"H");
+    char *str = "A";
+//    Node n2(253,456,"B");
+//    Node n3(45,201,"D");
+//    Node n4(111,200,"E");
+//    Node n5(55,88,"F");
+//    Node n6(231,100,"G");
+//    Node n7(89,300,"H");
 
-    vector<Node *> vnodes{&n1,&n2,&n3,&n4,&n5,&n6,&n7};
+    vector<Node *> vnodes{new Node(45,45,str)/*,&n2,&n3,&n4,&n5,&n6,&n7*/};
     NonOrientedGraph graph(vnodes);
 
-    graph.link(n1, n4);
+    /*graph.link(n1, n4);
     graph.link(n1, n5);
     graph.link(n1, n2);
-    graph.link(n1, n6);
-    graph.link(n2, n4);
-    graph.link(n2, n3);
-    graph.link(n6, n4);
-    graph.link(n6, n2);
-    graph.link(n5, n4);
-    graph.link(n5, n7);
-    graph.link(n5, n4);
+    graph.link(n1, n6);*/
 
     return graph;
 }// fixedGraph()
+
+OrientedGraph fixedOGraph()
+{
+
+    char * str = "A";
+    vector<Node *> vnodes{new Node(45,45,str), new Node(500,45,str), new Node(56, 300,str)};
+    OrientedGraph graph(vnodes);
+
+    graph.link((*vnodes[0]), (*vnodes[1]));
+    graph.link((*vnodes[0]), (*vnodes[2]));
+    graph.link((*vnodes[1]), (*vnodes[2]));
+
+    return graph;
+}// fixedOGraph()
 
 
 int main(int argc, char *argv[])
@@ -87,20 +94,10 @@ int main(int argc, char *argv[])
 
 
     // TODO pour l'instant c'est un peu tb gros
-    unsigned generation;
-    cout << "génération aléatoire : 0 \n" <<
-            "génération fixée : 1 \n" << endl;
 
-    // Graph graph = fixedGraph();
-    NonOrientedGraph graph = randomKGraph();
-
-//    cin >> generation;
-//    if(generation == 0)
-//    {
-//        Graph graph = randomKGraph();
-//    }
-//    else
-//        Graph graph = fixedGraph();
+    //NonOrientedGraph graph = randomKGraph();
+    // NonOrientedGraph graph = fixedGraph();
+    OrientedGraph graph = fixedOGraph();
 
     MainWindow w(nullptr, &graph);
     w.show();

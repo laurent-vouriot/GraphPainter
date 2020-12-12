@@ -5,7 +5,7 @@
 /**
 * @file    nonOrientedGraph.cpp
 * @author  Laurent VOURIOT
-* @version 0.1
+* @version 0.1.2
 * @date    12/12/2020
 */
 //-----------------------------------------------------------------------------
@@ -16,7 +16,7 @@
 #include <QPainter>
 
 #include "mainwindow.h"
-#include "nonOrientedGraph.h"
+#include "nonorientedoraph.h"
 
 NonOrientedGraph::NonOrientedGraph(const std::vector<Node *> &nodes)
     : AbsGraph(nodes)

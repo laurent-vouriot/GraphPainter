@@ -35,6 +35,8 @@ public:
      */
     NonOrientedGraph(const std::vector<Node *> &nodes);
 
+   // virtual ~NonOrientedGraph();
+
     /**
      * @brief link
      * crée une arête entre le sommet begin et end

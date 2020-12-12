@@ -13,14 +13,14 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     node.cpp \
-    nonOrientedGraph.cpp \
+    nonorientedoraph.cpp \
     orientedgraph.cpp
 
 HEADERS += \
     absgraph.h \
     mainwindow.h \
     node.h \
-    nonOrientedGraph.h \
+    nonorientedoraph.h \
     orientedgraph.h
 
 FORMS += \
