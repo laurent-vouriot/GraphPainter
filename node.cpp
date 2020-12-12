@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------
-  EzPainter
+  GraphPainter
   Decembre 2020
 -------------------------------------------------------------------------------*/
 /**
@@ -30,10 +30,15 @@ Node::Node(QPoint *coords, const char *name)
 int Node::x() const {return m_coord->x();}
 int Node::y() const {return m_coord->y();}
 
+//-----------------------------------------------------------------------------
+// GETTERS
+//-----------------------------------------------------------------------------
 QPoint 		*Node::getCoord()     const {return m_coord;}
 QString     *Node::getName()      const {return m_name;}
 
-// operator
+//-----------------------------------------------------------------------------
+// OPERATOR
+//-----------------------------------------------------------------------------
 bool Node::operator==(const Node &node)
 {
     return this->getCoord() == node.getCoord()
