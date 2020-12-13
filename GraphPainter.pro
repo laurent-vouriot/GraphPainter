@@ -9,26 +9,26 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    absgraph.cpp \
-    drawer.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    node.cpp \
-    nonorientedoraph.cpp \
-    nonorientedpath.cpp \
-    orientedgraph.cpp \
-    orientedpath.cpp
+    cpp/graph/absgraph.cpp \
+    cpp/drawer.cpp \
+    cpp/main.cpp \
+    cpp/mainwindow.cpp \
+    cpp/graph/node.cpp \
+    cpp/graph/nonorientedgraph.cpp \
+    cpp/path/nonorientedpath.cpp \
+    cpp/graph/orientedgraph.cpp \
+    cpp/path/orientedpath.cpp
 
 HEADERS += \
-    absgraph.h \
-    drawer.h \
-    mainwindow.h \
-    node.h \
-    nonorientedoraph.h \
-    nonorientedpath.h \
-    orientedgraph.h \
-    orientedpath.h \
-    strategypath.h
+    headers/graph/absgraph.h \
+    headers/drawer.h \
+    headers/mainwindow.h \
+    headers/graph/node.h \
+    headers/graph/nonorientedgraph.h \
+    headers/path/nonorientedpath.h \
+    headers/graph/orientedgraph.h \
+    headers/path/orientedpath.h \
+    headers/path/strategypath.h
 
 FORMS += \
     mainwindow.ui
