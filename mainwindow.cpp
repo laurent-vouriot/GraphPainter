@@ -8,8 +8,6 @@
 * @version 0.1
 * @date    11/12/2020
 */
-
-
 //-----------------------------------------------------------------------------
 // INCLUDES
 //-----------------------------------------------------------------------------
@@ -30,8 +28,8 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::MainWindow(Drawer *drawer, AbsGraph *graph)
     : QMainWindow(nullptr)
     , ui(new Ui::MainWindow)
-    , m_drawer(drawer)
     , m_graph(graph)
+    , m_drawer(drawer)
 {
     ui->setupUi(this);
 }

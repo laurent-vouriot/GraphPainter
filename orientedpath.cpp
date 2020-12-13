@@ -1,3 +1,16 @@
+/*----------------------------------------------------------------------------
+  GraphPainter
+  Decembre 2020
+-------------------------------------------------------------------------------*/
+/**
+* @file    orientedpath.cpp
+* @author  Laurent VOURIOT
+* @version 0.1
+* @date    13/12/2020
+*/
+//-----------------------------------------------------------------------------
+// INCLUDES
+//-----------------------------------------------------------------------------
 #include <math.h>
 
 #include <QPainter>
@@ -12,7 +25,7 @@ void OrientedPath::drawPath(QMainWindow *window, AbsGraph *graph)
     QColor color(0,0,0);
     pathPainter.setPen(color);
 
-    qreal arrowSize = 20;
+    qreal arrowSize = 10;
     // on parcours la matrice d'adjacence et si il y true entre 2 sommet on dessine l'arête
     for(unsigned i = 0; i < graph->getNodes().size(); i++)
     {
@@ -21,7 +34,8 @@ void OrientedPath::drawPath(QMainWindow *window, AbsGraph *graph)
             if(graph->getMatrice()[i][j])
             {
 
-
+                    // source : doc qt
+                    // pour dessiner un triangle au bout de la ligne
                     // ORIENTED PATH
                     QLineF line((*graph->getNodes()[i]->getCoord()),
                                 (*graph->getNodes()[j]->getCoord()));
@@ -37,8 +51,6 @@ void OrientedPath::drawPath(QMainWindow *window, AbsGraph *graph)
                     arrowHead << line.p1() << arrowP1 << arrowP2;
                     pathPainter.drawLine(line);
                     pathPainter.drawPolygon(arrowHead);
-
-
              }
         }
     }

@@ -19,13 +19,7 @@
 #include "absgraph.h"
 #include "node.h"
 
-typedef std::vector<std::vector<bool>> matrice;
 
-/**
- * @brief classe qui définie un graphe non orienté
- * 		  - m_graphe (matrice) : matrice d'adjacence du graphe
- * 		  - m_nodes (vector<Node>) : liste des sommets du graphes
- */
 class NonOrientedGraph : public AbsGraph
 {
 public:
@@ -38,8 +32,8 @@ public:
    // virtual ~NonOrientedGraph();
 
     /**
-     * @brief link
-     * crée une arête entre le sommet begin et end
+     * @brief link (Override)
+     * 		  crée une arête entre le sommet begin et end
      * @param begin (Node)
      * @param end (Node)
      */

@@ -1,3 +1,16 @@
+/*----------------------------------------------------------------------------
+  GraphPainter
+  Decembre 2020
+-------------------------------------------------------------------------------*/
+/**
+* @file    drawer.cpp
+* @author  Laurent VOURIOT
+* @version 0.1
+* @date    13/12/2020
+*/
+//-----------------------------------------------------------------------------
+// INCLUDES
+//-----------------------------------------------------------------------------
 #include <QPainter>
 
 #include "drawer.h"
@@ -24,6 +37,7 @@ void Drawer::draw(AbsGraph *graph, QMainWindow *window)
         nodePainter.drawText((*node->getCoord()),(*node->getName()));
     }
 
+    // DRAW PATHS
     m_pathDrawer->drawPath(window, graph);
 
 }

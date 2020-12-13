@@ -27,7 +27,8 @@ QT_END_NAMESPACE
 /**
  * @brief classe MainWindow, hérite de QMainWindow
  * 		  - ui (*Ui::MainWindow) : qt
- * 		  - m_graph (*Graph) : pointeur vers le graphe sur lequel on travail
+ * 		  - m_graph (AbsGraph *) : pointeur vers le graphe sur lequel on travail
+ * 		  - m_drawer (Drawer *) : Drawer du graphe
  */
 class MainWindow : public QMainWindow
 {
@@ -37,31 +38,23 @@ public:
     /**
      * @brief MainWindow constructor
      * @param parent (*QWidget)
-     * @param graph (*Graph)
      */
     MainWindow(QWidget *parent = nullptr);
-
+    /**
+     * @brief MainWindow constructor
+     * @param drawer (Drawer *)
+     * @param graph (AbsGraphe *)
+     */
     MainWindow(Drawer *drawer, AbsGraph *graph);
     /**
     * @brief destructor
     */
     ~MainWindow();
-
     /**
      * @brief paintEvent (void) virtual
      * @param event (*QPaintEvent)
      */
     virtual void paintEvent(QPaintEvent *event);
-
-    /**
-     * @brief dessine sur le painter tous les sommets du graphe
-     */
-    void drawNodes();
-    /**
-     * @brief dessine sur le painter les arêtes entre les sommets
-     */
-    void drawPaths();
-
 private:
     Ui::MainWindow *ui;
     AbsGraph  *m_graph;
