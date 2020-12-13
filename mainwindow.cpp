@@ -59,26 +59,29 @@ void MainWindow::drawPaths()
         {
             if(m_graph->getMatrice()[i][j])
             {
-                // ORIENTED PATH
-                QLineF line((*m_graph->getNodes()[i]->getCoord()),
-                            (*m_graph->getNodes()[j]->getCoord()));
 
-                double angle = std::atan2(-line.dy(), line.dx());
-                QPointF arrowP1 = line.p1() + QPointF(sin(angle + M_PI / 3) * arrowSize,
-                                                      cos(angle + M_PI / 3) * arrowSize);
-                QPointF arrowP2 = line.p1() + QPointF(sin(angle + M_PI - M_PI / 3) * arrowSize,
-                                                      cos(angle + M_PI - M_PI / 3) * arrowSize);
 
-                QPolygonF arrowHead;
-                arrowHead.clear();
-                arrowHead << line.p1() << arrowP1 << arrowP2;
-                pathPainter.drawLine(line);
-                pathPainter.drawPolygon(arrowHead);
+                    // ORIENTED PATH
+                    QLineF line((*m_graph->getNodes()[i]->getCoord()),
+                                (*m_graph->getNodes()[j]->getCoord()));
 
-                /* // NON ORIENTED PATH
-                pathPainter.drawLine((*m_graph->getNodes()[i]->getCoord()),
-                                     (*m_graph->getNodes()[j]->getCoord()y));
-                                     */
+                    double angle = std::atan2(-line.dy(), line.dx());
+                    QPointF arrowP1 = line.p1() + QPointF(sin(angle + M_PI / 3) * arrowSize,
+                                                          cos(angle + M_PI / 3) * arrowSize);
+                    QPointF arrowP2 = line.p1() + QPointF(sin(angle + M_PI - M_PI / 3) * arrowSize,
+                                                          cos(angle + M_PI - M_PI / 3) * arrowSize);
+
+                    QPolygonF arrowHead;
+                    arrowHead.clear();
+                    arrowHead << line.p1() << arrowP1 << arrowP2;
+                    pathPainter.drawLine(line);
+                    pathPainter.drawPolygon(arrowHead);
+
+//                    // NON ORIENTED PATH
+//                    pathPainter.drawLine((*m_graph->getNodes()[i]->getCoord()),
+//                                         (*m_graph->getNodes()[j]->getCoord()));
+
+
              }
         }
 
