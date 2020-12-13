@@ -20,6 +20,9 @@
 
 #include "mainwindow.h"
 
+#include "orientedpath.h"
+#include "nonorientedpath.h"
+
 using namespace std;
 
 
@@ -94,12 +97,13 @@ int main(int argc, char *argv[])
 
 
     // TODO pour l'instant c'est un peu tb gros
+    NonOrientedGraph graph = randomKGraph();
 
-    //NonOrientedGraph graph = randomKGraph();
-    // NonOrientedGraph graph = fixedGraph();
-    OrientedGraph graph = fixedOGraph();
+    OrientedPath patho;
 
-    MainWindow w(nullptr, &graph);
+    Drawer drawer(&patho);
+
+    MainWindow w(&drawer, &graph);
     w.show();
     return a.exec();
 

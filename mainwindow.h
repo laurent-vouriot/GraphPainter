@@ -18,6 +18,7 @@
 
 #include "nonorientedoraph.h"
 #include "orientedgraph.h"
+#include "drawer.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -38,7 +39,9 @@ public:
      * @param parent (*QWidget)
      * @param graph (*Graph)
      */
-    MainWindow(QWidget *parent = nullptr, AbsGraph *graph = nullptr);
+    MainWindow(QWidget *parent = nullptr);
+
+    MainWindow(Drawer *drawer, AbsGraph *graph);
     /**
     * @brief destructor
     */
@@ -62,5 +65,6 @@ public:
 private:
     Ui::MainWindow *ui;
     AbsGraph  *m_graph;
+    Drawer 	  *m_drawer;
 };
 #endif // MAINWINDOW_H

@@ -10,18 +10,25 @@ CONFIG += c++11
 
 SOURCES += \
     absgraph.cpp \
+    drawer.cpp \
     main.cpp \
     mainwindow.cpp \
     node.cpp \
     nonorientedoraph.cpp \
-    orientedgraph.cpp
+    nonorientedpath.cpp \
+    orientedgraph.cpp \
+    orientedpath.cpp
 
 HEADERS += \
     absgraph.h \
+    drawer.h \
     mainwindow.h \
     node.h \
     nonorientedoraph.h \
-    orientedgraph.h
+    nonorientedpath.h \
+    orientedgraph.h \
+    orientedpath.h \
+    strategypath.h
 
 FORMS += \
     mainwindow.ui
