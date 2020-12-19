@@ -36,6 +36,9 @@ public:
      * @param name (string)
      */
     Node(const int &x = -1, const int &y = -1, const char *name = "nullnode");
+
+    Node(const int &x = -1, const int &y = -1, QString *name = nullptr);
+
     /**
      * @brief Node constructor avec QPoint
      * @param coords (*QPoint)
@@ -61,7 +64,7 @@ public:
      * @brief getCoord
      * @return (*QPoint)
      */
-    QPoint 	   *getCoord()  const;
+    QPoint *getCoord()  const;
     /**
      * @brief getName
      * @return (string)

@@ -11,7 +11,7 @@
 //-----------------------------------------------------------------------------
 // INCLUDES
 //-----------------------------------------------------------------------------
-#include "node.h"
+#include "headers/graph/node.h"
 
 #include <QPainter>
 
@@ -20,11 +20,19 @@ Node::Node(const int &x, const int &y, const char *name)
     , m_name(new QString(name))
 {}
 
+Node::Node(const int &x, const int &y, QString *name)
+    : m_coord(new QPoint(x,y))
+    , m_name(name)
+
+{}
+
 Node::Node(QPoint *coords, const char *name)
     : m_coord(coords)
     , m_name(new QString(name))
 
 {}
+
+
 
 int Node::x() const {return m_coord->x();}
 int Node::y() const {return m_coord->y();}
