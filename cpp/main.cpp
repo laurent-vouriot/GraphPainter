@@ -12,16 +12,16 @@
 // INCLUDES
 //-----------------------------------------------------------------------------
 #include <iostream>
-#include <iomanip>
 #include <stdlib.h> // srand, rand
 #include <time.h>   // time
+#include <string>
 
 #include <QApplication>
 
-#include "mainwindow.h"
+#include "headers/mainwindow.h"
 
-#include "orientedpath.h"
-#include "nonorientedpath.h"
+#include "headers/path/orientedpath.h"
+#include "headers/path/nonorientedpath.h"
 
 using namespace std;
 
@@ -55,56 +55,137 @@ NonOrientedGraph randomKGraph()
     return graph;
 }// randomKGraph()
 
-NonOrientedGraph fixedGraph()
+vector<Node *> createNodes(vector<Node *> & vnodes)
 {
-    char *str = "A";
-//    Node n2(253,456,"B");
-//    Node n3(45,201,"D");
-//    Node n4(111,200,"E");
-//    Node n5(55,88,"F");
-//    Node n6(231,100,"G");
-//    Node n7(89,300,"H");
+    int x = -1, y;
+    string name;
 
-    vector<Node *> vnodes{new Node(45,45,str)/*,&n2,&n3,&n4,&n5,&n6,&n7*/};
-    NonOrientedGraph graph(vnodes);
+    while(x != 0)
+    {
+        cout << "entrez x, y, nom, tapez 0"<< endl;
+        cin >> x;
+        if(x != 0)
+        {
 
-    /*graph.link(n1, n4);
-    graph.link(n1, n5);
-    graph.link(n1, n2);
-    graph.link(n1, n6);*/
-
-    return graph;
-}// fixedGraph()
-
-OrientedGraph fixedOGraph()
-{
-
-    char * str = "A";
-    vector<Node *> vnodes{new Node(45,45,str), new Node(500,45,str), new Node(56, 300,str)};
-    OrientedGraph graph(vnodes);
-
-    graph.link((*vnodes[0]), (*vnodes[1]));
-    graph.link((*vnodes[0]), (*vnodes[2]));
-    graph.link((*vnodes[1]), (*vnodes[2]));
-
-    return graph;
-}// fixedOGraph()
-
+            cin >> y;
+            cin.ignore();
+            getline(cin, name);
+            vnodes.push_back(new Node(x,y,new QString(name.c_str())));
+        }
+    }
+    return vnodes;
+}// createNodes()
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+    // création des sommets
+    // ____________________
+    int x, y;
+    vector<Node *> vnodes;
+    string name;
+    cout << "entrez x, y, tapez 0 pour quitter"<< endl;
 
-    // TODO pour l'instant c'est un peu tb gros
-    NonOrientedGraph graph = randomKGraph();
+    cin >> x;
+    cin >> y;
+    cin.ignore();
+    getline(cin, name);
 
-    OrientedPath patho;
+    vnodes.push_back(new Node(x,y,new QString(name.c_str())));
+    vnodes = createNodes(vnodes);
 
-    Drawer drawer(&patho);
 
-    MainWindow w(&drawer, &graph);
+    // création du graphe
+    //___________________
+
+    int choice;
+    cout << "tapez 0 pour pour créer un graphe non orienté \n"
+            "tapez 1 pour créer un graphe orienté " << endl;
+    cin >> choice;
+
+    AbsGraph *graph;
+    StrategyPath *path;
+
+    switch (choice)
+    {
+        case 0:
+            graph = new NonOrientedGraph(vnodes);
+            path  = new NonOrientedPath;
+            break;
+        case 1:
+            graph = new OrientedGraph(vnodes);
+            path  = new OrientedPath;
+            break;
+        default:
+            path  = new NonOrientedPath;
+            graph = new NonOrientedGraph(vnodes);
+            break;
+    }
+
+    // création des arêtes
+    //____________________
+
+    string begin;
+    string end;
+
+    cout << "entrez begin end, tapez 0" << endl;
+    cin.ignore();
+    getline(cin, begin);
+    getline(cin, end);
+
+    cout << begin	<< " " << end << endl;
+
+    QString qbegin = begin.c_str();
+    QString qend = end.c_str();
+
+    Node *nbegin;
+    Node *nend;
+    for(Node *n : vnodes)
+    {
+        if((*n->getName()) == qbegin)
+            nbegin = n;
+        else if((*n->getName()) == qend)
+            nend = n;
+    }
+    graph->link((*nbegin), (*nend));
+
+    while(begin != "stop")
+    {
+        cout << "entrez begin end, tapez 0" << endl;
+        getline(cin, begin);
+        if(begin != "stop")
+        {
+            getline(cin, end);
+
+            cout << begin	<< " " << end << endl;
+
+            QString qbegin = begin.c_str();
+            QString qend = end.c_str();
+
+            Node *nbegin;
+            Node *nend;
+
+            for(Node *n : vnodes)
+            {
+                if((*n->getName()) == qbegin)
+                    nbegin = n;
+                else if((*n->getName()) == qend)
+                    nend = n;
+            }
+            graph->link((*nbegin), (*nend));
+        }
+    }
+
+    // darwer & mainwindow
+    //____________________
+
+    // drawer
+    Drawer drawer(path);
+
+    // main window
+    MainWindow w(&drawer, graph);
     w.show();
     return a.exec();
 
-}
+}// main()
