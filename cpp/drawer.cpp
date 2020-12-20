@@ -13,7 +13,7 @@
 //-----------------------------------------------------------------------------
 #include <QPainter>
 
-#include "drawer.h"
+#include "headers/drawer.h"
 
 
 Drawer::Drawer(StrategyPath *pathDrawer)
@@ -24,21 +24,25 @@ void Drawer::draw(AbsGraph *graph, QMainWindow *window)
 {
 
     // DRAW NODES
-    QColor color(0,0,0);
     QPainter nodePainter(window);
-    nodePainter.setPen(color);
+    nodePainter.setPen(Qt::white);
+    nodePainter.setBrush(Qt::white);
+
+    //    namePainter.setPen(Qt::blue);
+    //    namePainter.setBrush(Qt::blue);
     // pour chaque sommet du graphe on crée un cerle autour de son
     // centre et son nom
     // TODO :https://stackoverflow.com/questions/42529740/getting-the-qpainter-drawtext-color-change-with-with-shader
     for(const Node *node:graph->getNodes())
     {
-        nodePainter.drawEllipse((*node->getCoord()),10,10);
-        // nodePainter.drawPoint((*node->getCoord()));
-        nodePainter.drawText((*node->getCoord()),(*node->getName()));
+        nodePainter.drawEllipse((*node->getCoord()),5,5);
+        QPoint tmp = (*node->getCoord());
+        tmp.setX(tmp.x() + 7);
+        tmp.setY(tmp.y() + 7);
+        nodePainter.drawText(tmp,(*node->getName()));
     }
 
     // DRAW PATHS
     m_pathDrawer->drawPath(window, graph);
-
 }
 

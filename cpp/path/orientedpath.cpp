@@ -11,11 +11,11 @@
 //-----------------------------------------------------------------------------
 // INCLUDES
 //-----------------------------------------------------------------------------
-#include <math.h>
+#include <math.h> // atan2
 
 #include <QPainter>
 
-#include "orientedpath.h"
+#include "headers/path/orientedpath.h"
 
 OrientedPath::OrientedPath() {}
 
@@ -40,6 +40,8 @@ void OrientedPath::drawPath(QMainWindow *window, AbsGraph *graph)
                     QLineF line((*graph->getNodes()[i]->getCoord()),
                                 (*graph->getNodes()[j]->getCoord()));
 
+
+
                     double angle = std::atan2(-line.dy(), line.dx());
                     QPointF arrowP1 = line.p1() + QPointF(sin(angle + M_PI / 3) * arrowSize,
                                                           cos(angle + M_PI / 3) * arrowSize);
@@ -54,4 +56,4 @@ void OrientedPath::drawPath(QMainWindow *window, AbsGraph *graph)
              }
         }
     }
-}
+}// drawPath()

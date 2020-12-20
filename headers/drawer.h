@@ -13,9 +13,8 @@
 //-----------------------------------------------------------------------------
 // INCLUDES
 //-----------------------------------------------------------------------------
-#include "strategypath.h"
-#include "nonorientedpath.h"
-
+#include "path/strategypath.h"
+#include "path/nonorientedpath.h"
 /**
  * @brief classe Drawer
  * 		  pour dessiner le graphe

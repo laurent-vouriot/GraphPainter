@@ -11,7 +11,7 @@
 //-----------------------------------------------------------------------------
 // INCLUDES
 //-----------------------------------------------------------------------------
-#include "orientedgraph.h"
+#include "headers/graph/orientedgraph.h"
 
 OrientedGraph::OrientedGraph(const std::vector<Node *> &nodes)
     : AbsGraph(nodes)

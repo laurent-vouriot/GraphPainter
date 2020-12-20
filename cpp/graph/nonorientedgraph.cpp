@@ -15,8 +15,8 @@
 
 #include <QPainter>
 
-#include "mainwindow.h"
-#include "nonorientedgraph.h"
+#include "headers/mainwindow.h"
+#include "headers/graph/nonorientedgraph.h"
 
 NonOrientedGraph::NonOrientedGraph(const std::vector<Node *> &nodes)
     : AbsGraph(nodes)

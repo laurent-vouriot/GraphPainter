@@ -16,8 +16,8 @@
 //-----------------------------------------------------------------------------
 #include <QMainWindow>
 
-#include "nonorientedgraph.h"
-#include "orientedgraph.h"
+#include "graph/nonorientedgraph.h"
+#include "graph/orientedgraph.h"
 #include "drawer.h"
 
 QT_BEGIN_NAMESPACE

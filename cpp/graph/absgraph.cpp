@@ -11,7 +11,9 @@
 //-----------------------------------------------------------------------------
 // INCLUDES
 //-----------------------------------------------------------------------------
-#include "absgraph.h"
+#include <iostream>
+
+#include "headers/graph/absgraph.h"
 
 AbsGraph::AbsGraph(const std::vector<Node *> &nodes)
     : m_nodes(nodes)
@@ -20,6 +22,16 @@ AbsGraph::AbsGraph(const std::vector<Node *> &nodes)
     // cela signifie que l'on a tous les sommets mais il n'y
     // a pour le moment pas d'arêtes entre les sommets
      m_graph = matrice(m_nodes.size(), std::vector<bool>(m_nodes.size(), false));
+
+//     for(unsigned i = 0; i < m_graph.size(); i++)
+//     {
+//         for(unsigned j = 0; j < m_graph.size(); j++)
+//         {
+//             std::cout <<  m_graph[i][j] << std::endl;
+//         }
+//     }
+
+
 }// AbsGraph()
 
 //-----------------------------------------------------------------------------

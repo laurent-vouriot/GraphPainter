@@ -15,7 +15,7 @@
 //-----------------------------------------------------------------------------
 #include <QMainWindow>
 
-#include "absgraph.h"
+#include "headers/graph/absgraph.h"
 
 /**
  * @brief Interface StrategyPath

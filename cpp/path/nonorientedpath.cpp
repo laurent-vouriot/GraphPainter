@@ -13,7 +13,7 @@
 //-----------------------------------------------------------------------------
 #include <QPainter>
 
-#include "nonorientedpath.h"
+#include "headers/path/nonorientedpath.h"
 
 NonOrientedPath::NonOrientedPath(){}
 
@@ -26,9 +26,13 @@ void NonOrientedPath::drawPath(QMainWindow *window, AbsGraph *graph)
     {
         for(unsigned j = 0; j < graph->getNodes().size(); j++)
         {
-           // NON ORIENTED PATH
-            pathPainter.drawLine((*graph->getNodes()[i]->getCoord()),
-                                 (*graph->getNodes()[j]->getCoord()));
+            if(graph->getMatrice()[i][j])
+            {
+             // NON ORIENTED PATH
+                pathPainter.drawLine((*graph->getNodes()[i]->getCoord()),
+                                     (*graph->getNodes()[j]->getCoord()));
+
+            }
         }
     }
 }
